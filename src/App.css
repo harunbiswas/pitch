@@ -42,3 +42,41 @@ td > a {
   padding: 20px;
   border: 1px solid #000;
 }
+
+
+/* filter  */
+
+.filter
+{
+  margin: 20px 0;
+}
+
+.filter-wrp{
+  display: flex;
+  gap: 40px;
+
+
+}
+
+.filter-item{
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.filter label {
+  font-weight: 600;
+}
+
+.filter button{
+width: 100px;
+height: 40px;
+margin-top: 28px;
+}
+
+.filter select {
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  font-size:16px;
+}

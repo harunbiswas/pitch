@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Filter from "./Filter";
 
 export default function MultiPitch() {
   const url =
@@ -9,6 +10,8 @@ export default function MultiPitch() {
   const [buttons, setButtons] = useState([]);
   const [showBtn, setShowBtn] = useState(0);
   const [valueShow, setValueShow] = useState(30);
+  const [pitchType, setPitchType]= useState([])
+  const [eventType, setEventType]= useState([])
 
   useEffect(() => {
     axios
@@ -31,6 +34,25 @@ export default function MultiPitch() {
     }
   }, [pitchs]);
 
+  useEffect(()=>{
+    pitchs.forEach(item=>{
+      setPitchType(prev=>{
+        return[...prev, item.pitch_type]
+      }) 
+     
+    })
+  },[pitchs]) 
+  
+  useEffect(()=>{
+    pitchs.forEach(item=>{
+      setEventType(prev=>{
+        return[...prev, item.event_type]
+      })
+     
+    })
+  },[pitchs])
+
+
   const formatter = new Intl.DateTimeFormat(undefined, {
     hour: "numeric",
     minute: "numeric",
@@ -46,6 +68,8 @@ export default function MultiPitch() {
     <div className="multi-pitch">
       <div className="multi-pitch-view">
         <h2>Multi-Pitch View</h2>
+        <Filter data={{pitchs: pitchType, events: eventType}} />
+
         <table className="pitch-table">
           <thead>
             <tr>
