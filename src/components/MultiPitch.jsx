@@ -12,6 +12,9 @@ export default function MultiPitch() {
   const [valueShow, setValueShow] = useState(30);
   const [pitchType, setPitchType]= useState([])
   const [eventType, setEventType]= useState([])
+  const [pitch, setPitch]=useState(""); 
+  const [event, setEvent]=useState("");
+  const[plateSpeed, setPlateSpeed]= useState("") 
 
   useEffect(() => {
     axios
@@ -64,11 +67,13 @@ export default function MultiPitch() {
     setShowBtn(e - 1);
   };
 
+  console.log(pitch, event, plateSpeed)
+
   return (
     <div className="multi-pitch">
       <div className="multi-pitch-view">
         <h2>Multi-Pitch View</h2>
-        <Filter data={{pitchs: pitchType, events: eventType}} />
+        <Filter data={{pitchs: pitchType, events: eventType, setEvent, setPitch, setPlateSpeed}} />
 
         <table className="pitch-table">
           <thead>
